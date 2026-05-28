@@ -1,0 +1,136 @@
+Functional
+1) Food Delivery (Zomato, Swiggy, Eatsure)
+a) User registration and login 
+- User should be able to create login account (Jira board)
+b) Restaurant search 
+- User can search for restaurant by name, ratings and location
+c) Restaurant Menu browsing and item selection 
+- Each restaurant should have menu with items, users can add to cart
+d) Order placement and Payment
+- User can place an order and pay via UPI, COD and Card
+e) Real-time order tracking
+- Users can track their order 
+
+
+2) School  Management System (Admins, teachers, students)
+a) Role based login (student, teachers and parents)
+- Admin, teachers and students should login at different level
+b) Student attendance management
+- Teachers can mark and view daily student attendance
+c) Timetable and class schedule
+- System should allow creation and class schedule
+d) Grade and report card generation
+- teachers can enter marks and report card at one click
+c) Fees section
+- Parents should be able to make easy transactions
+
+
+Functional documentations (Director, Architect (Infra, Application)Enterprise, Pre-sales, Technical project manager)
+- Analysis of Functionality
+- Crunch and break into HLD (Decide Monolithic or Microservices) (15 pages PPT)(Draw.io and visio)
+- Decided to go with Monolithic application 
+- Use case - LLD is created (Detailed information, Application - Frontend (Angular, react), backend (java, .net), Database
+(MySQL, Postgress)
+- PI Planning (quaterly)
+- User story is created (Azure board, Jira, rally - Pm tools)
+- Sprints are created (15 or 21 days) 
+- Tasks are assigned on user stories 
+- Project begins with a Scrum call to discuss sprint (15-30 minutes call duration)
+- Retrospective call is scheduled to discuss scrum calls (Backlog, spill over, completion)
+- Development is completed 
+- Parallelly we have created infrastructure using IAC tool terraform with Generic module which contains for_each map of object
+Dynamic block, optional attribute, conditional literature 
+1) Onboarding/off-boarding solution (management group, Subscription, association of subscription to MG,Group creation, RBAC, user creation, addition to group, pro assignment)
+2) 4 Environments - Dev, test, QA, prod
+2.a - RG, vnet, subnet, VM (frontend and backend - Linux or Windows), VMSS, Database (cosmos, postgress, Mysql - Depends on customer req), Firewall, NSG, ASG, Loadbalancer, Application getway, frontdoor, region services, trafic manager.
+2.b- Monitor - Azure monitor, Log analytics workspace, Prometheus, Grafana, Nagios
+2.c- Backup and DR - Backup halt, Highly availability (dr)
+2.d - Security, Governance and compliance - Defender, Azure policy, security center, key vault, NSG, ASG, Bastion
+2.e - Cost optimisation 
+2.f - Network connectivity - Vnet peering, VPN getway, express route. 
+
+- Each child module we have pushed to the Azure repository by putting proper tag and versioning 
+- Call the child module, create a parent module and inside parent module, we have create infra - sandbox, prepod and prod
+- We will call the module based on child module, put the right dependency and generate tfvars for the input. 
+- Suppose we have created sandbox 
+- We will push the codes to trunk based strategy on Azure repository
+Eg: Suppose one new ticket came to create VM (Explains the steps)
+Clone parent module from Azure repository 
+Create one feature branch - vm creation-ticket2035 
+- message - add one VM in tfvars in map of object
+- Post addition- push the code to feature branch - remote repo
+- As soon as we push the code to remote feature automatically pipeline will run (YAML)
+- Before generation of plan it will validate or scan using code - tfsec (vulnerabilities), trufflehog(secret management), tflint (linting process), Chef, blackaqua, checkops, 
+- If Everything looks good and plan is succeded then only reviewer can approve and merge this pull request (pr) to main branch. 
+- as soon as it gets merged, automatically pipeline will run from main branch, against check ups with best practices Azure devsecops best practises with security tools - tfsec (vulnerabilities), trufflehog(secret management), tflint (linting process), Chef, blackaqua, checkops, 
+- if all security, testing, linting checks are passed, it goes to plan stage and post plan it goes to manual validation stage
+- Once lead checks up this manual validation stage, once he approves, apply will happen and VM will be added. 
+
+
+To - Do : Middleware 
+- Application deployment 
+
+
+INFRASTRUCTURE 
+TERRAFORM CODE(RG/Vnet/subnet/NSG/keyvoult/VM)
+GIT/AZURE REPO -TRUNK BASED BRANCH STRADEGY
+ADO/GITHUB ACTION
+TFSEC/TFLINT/SONARQUBE/TRIVY
+ENV-DEV/QA/PROD
+
+- Application
+FE
+BE
+Database
+BUILD
+DEPLOYMENT
+
+DOCKERFILE --IMAGE ---ACR
+MANIFEST YAML
+ARGOCD
+HELM
+
+
+Azure
+Load balancer/Application GW/TRAFFIC MANAGER/Frontdoor
+PRIVATE ENDPOINT/SERVICE ENDPOINT
+AZURE Bastion/KEYVOULT
+NSG/ASG/AZURE FIREWALL /HUB&SPOKE Model
+BACKUP DR -Azure Backup
+MONITORING-Azure Monitor/Promethus/Grafana
+Landing zone -Highly avl
+Azure policy -Building policy/
+COST OPTIMIZATION
+LOgic app/function app/web app/APIM
+DB- mysql/COSMOS DB
+REDIS CACHES
+ADF
+AZURE DATABRICKS
+
+TERRAFROM
+COUNT vs FOR_EACH
+DYNAMIC BLOCK
+BACKEND BLOCK
+PROVISIONER BLOCK
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+- 
+
+
+
