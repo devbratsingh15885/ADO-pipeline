@@ -1,0 +1,119 @@
+Disaster Recovery (DR) kya hota hai?
+
+Disaster Recovery ka matlab hai:
+agar system/application crash ho jaye, server down ho jaye, cyber attack ho jaye, ya data center fail ho jaye, to system ko jaldi restore karna.
+
+Example:
+
+Server crash
+Database corrupt
+Ransomware attack
+Cloud region down
+
+DR plan ensure karta hai ki business continue rahe.
+
+RTO (Recovery Time Objective)
+Meaning
+
+System ko kitne time me wapas online lana hai.
+
+Simple Language
+
+“Downtime kitna acceptable hai?”
+
+Example
+
+Agar company ka RTO = 2 hours hai:
+
+Matlab:
+
+Disaster ke baad application maximum 2 ghante tak down reh sakti hai.
+2 ghante ke andar restore karna hi padega.
+Real Example
+
+Banking app:
+
+RTO = 15 minutes
+
+School website:
+
+RTO = 24 hours
+RPO (Recovery Point Objective)
+Meaning
+
+Kitna data loss acceptable hai.
+
+Simple Language
+
+“Kitna old backup tak ka data lose ho sakta hai?”
+
+Example
+
+Agar RPO = 30 minutes hai:
+
+Matlab:
+
+Maximum 30 min ka data lose ho sakta hai.
+Backup har 30 min me lena padega.
+Easy Example
+
+Suppose:
+
+Last backup = 10:00 AM
+Server crash = 10:20 AM
+
+Agar RPO = 30 min:
+
+10:00 se 10:20 ka data lose acceptable hai.
+
+Agar RPO = 5 min:
+
+Backup bahut frequently lena padega.
+Difference Between RTO and RPO
+Feature	RTO	RPO
+Focus	Time	Data
+Meaning	System kab tak recover hona chahiye	Kitna data loss acceptable hai
+Concern	Downtime	Data loss
+Example	1 hour	15 minutes
+Diagram Understanding
+Disaster Occurs
+       |
+       |------ RPO ------|
+       |                 |
+ Last Backup         Disaster Time
+
+       |--------- RTO ----------|
+       |                        |
+ Disaster Time          System Restored
+Cloud Example
+
+In Microsoft Azure:
+
+Azure Backup → RPO manage karta hai
+Azure Site Recovery → RTO improve karta hai
+Interview Answer (Short)
+What is RTO?
+
+RTO is the maximum acceptable downtime after a disaster.
+
+What is RPO?
+
+RPO is the maximum acceptable data loss during a disaster.
+
+Real DevOps/Cloud Usage
+Service	Use
+Backup	RPO maintain
+Replication	Fast recovery
+Load Balancer	High availability
+Multi-region deployment	DR strategy
+Azure Site Recovery	VM failover
+Kubernetes	Self-healing
+Important Point
+Low RTO = Fast recovery needed
+Low RPO = Frequent backups needed
+Lower values = Higher cost
+
+Example:
+
+RTO = 5 min → expensive infra
+RPO = 0 → real-time replication needed
